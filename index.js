@@ -46,7 +46,7 @@ app.get("/api/users/:id", (request, response) => {
     } else {
         response.status(404).end();
     }
-    
+
 });
 
 app.delete("/api/users/:id", (request, response) => {
@@ -73,7 +73,7 @@ app.post("/api/users", (request, response) => {
     response.json(newUser);
 });
 
-const port = 3001;
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}/`);
 });
