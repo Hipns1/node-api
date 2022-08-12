@@ -66,7 +66,6 @@ app.post("/api/users", (request, response) => {
         name: user.name,
         email: user.email,
         password: user.password,
-        confirmPassword: user.confirmPassword
     });
     newUser.save().then((savedUser) => {
         response.json(savedUser);
@@ -79,8 +78,7 @@ app.put("/api/users/:id", (request, response) => {
     const updateUser = {
         name: request.body.name,
         email: request.body.email,
-        password: request.body.password,
-        confirmPassword: request.body.confirmPassword,
+        password: request.body.password
     };
     User.findByIdAndUpdate(id, updateUser, { new: true })
         .then(user => {
