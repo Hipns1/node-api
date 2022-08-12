@@ -56,7 +56,7 @@ app.delete("/api/users/:id", (request, response) => {
 app.post("/api/users", (request, response) => {
     const user = request.body;
 
-    if (!user.name || !user.email) {
+    if (!user.name || !user.email || !user.password || !user.confirmPassword) {
         response.status(400).json({
             error: "Name and email are required"
         });
@@ -64,7 +64,9 @@ app.post("/api/users", (request, response) => {
 
     const newUser = new User({
         name: user.name,
-        email: user.email
+        email: user.email,
+        password: user.password,
+        confirmPassword: user.confirmPassword
     });
     newUser.save().then((savedUser) => {
         response.json(savedUser);
@@ -76,7 +78,9 @@ app.put("/api/users/:id", (request, response) => {
     const id = request.params.id;
     const updateUser = {
         name: request.body.name,
-        email: request.body.email
+        email: request.body.email,
+        password: request.body.password,
+        confirmPassword: request.body.confirmPassword,
     };
     User.findByIdAndUpdate(id, updateUser, { new: true })
         .then(user => {
