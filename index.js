@@ -56,7 +56,7 @@ app.delete("/api/users/:id", (request, response) => {
 app.post("/api/users", (request, response) => {
     const user = request.body;
 
-    if (!user.name || !user.email || !user.password || !user.confirmPassword) {
+    if (!user.name || !user.email || !user.password) {
         response.status(400).json({
             error: "Name and email are required"
         });
