@@ -71,7 +71,7 @@ app.post("/api/users", (request, response) => {
     });
 });
 
-//put pra editar un usuario especifico
+//put para editar un usuario especifico
 app.put("/api/users/:id", (request, response) => {
     const id = request.params.id;
     const updateUser = {
